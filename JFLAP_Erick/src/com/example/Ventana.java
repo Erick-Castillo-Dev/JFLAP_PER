@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,11 +17,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 
 public class Ventana extends JFrame implements ActionListener {
+	LienzoParaArrastrarFiguras c = new LienzoParaArrastrarFiguras();
+	boolean cur = true;
+	boolean fi = false;
 	private JMenuBar menuBar;
     private JMenu archivo,entrada,ayuda;
     private JMenuItem ar_nuevo,ar_abrir,ar_guardar,ar_imagen,ar_imprimir,ar_salir;
     private JMenuItem en_paso,en_rapido,en_multiple;
     private JMenuItem ay_ayuda;
+    private JButton cursor,estado,transicion,eliminar,des,re;
     
     public Ventana(){
     	super("JFLAP");
@@ -33,7 +39,6 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
-    	LienzoParaArrastrarFiguras c = new LienzoParaArrastrarFiguras();
     	c.addFigura(new Rectangulo(2, 3, 50, 33, Color.RED));
     	c.addFigura(new Rectangulo(7, 22, 150, 10, Color.GREEN));
     	c.addFigura(new Rectangulo(11, 44, 20, 100, Color.CYAN));
@@ -90,34 +95,34 @@ public class Ventana extends JFrame implements ActionListener {
 	
 	private JToolBar getToolBar() {
         JToolBar barraBotones = new JToolBar();
-        barraBotones.add(new JButton("Cursor"));
-        barraBotones.add(new JButton("Estado"));
-        barraBotones.add(new JButton("Transicion"));
-        barraBotones.add(new JButton("Eliminar"));
-        barraBotones.add(new JButton("Des-Hacer"));
-        barraBotones.add(new JButton("Re-Hacer"));
+        cursor = new JButton("Cursor");
+        estado = new JButton("Estado");
+        transicion = new JButton("Transicion");
+        eliminar = new JButton("Eliminar");
+        des = new JButton("Des-Hacer");
+        re = new JButton("Re-Hacer");
+        cursor.addActionListener(this);
+        estado.addActionListener(this);
+        transicion.addActionListener(this);
+        eliminar.addActionListener(this);
+        des.addActionListener(this);
+        re.addActionListener(this);
+        barraBotones.add(cursor);
+        barraBotones.add(estado);
+        barraBotones.add(transicion);
+        barraBotones.add(eliminar);
+        barraBotones.add(des);
+        barraBotones.add(re);
         return barraBotones;
     }
 	
-     private void createToolBar() {
-        
-        JToolBar toolbar = new JToolBar();
-
-
-        JButton exitButton = new JButton("Salir");
-        toolbar.add(exitButton);
-        
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-        add(toolbar, BorderLayout.NORTH);        
-    }
-	
-	public void actionPerformed(ActionEvent arg0) {
-		
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == cursor){
+			cur = true;
+			fi = false;
+		}else if(e.getSource() == estado){
+			cur = false;
+			fi = true;
+		}
 	}
 }

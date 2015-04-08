@@ -49,8 +49,3 @@
 /* 123 */     return this.y;
 /*     */   }
 /*     */ }
-
-/* Location:           D:\arrastrar_graficos-1.0.jar
- * Qualified Name:     chuidiang.ejemplos.arrastrar_grafico.Rectangulo
- * JD-Core Version:    0.6.0
- */
