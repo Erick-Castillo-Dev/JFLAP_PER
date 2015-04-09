@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 public class Ventana extends JFrame implements ActionListener {
@@ -25,6 +27,8 @@ public class Ventana extends JFrame implements ActionListener {
     private JMenuItem en_paso,en_rapido,en_multiple;
     private JMenuItem ay_ayuda;
     private JButton cursor,estado,transicion,eliminar,des,re;
+    private JPanel panel = new JPanel();
+	private JScrollPane scrollPane = new JScrollPane(panel);
     
     public Ventana(){
     	super("JFLAP");
@@ -38,6 +42,9 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        this.getContentPane().add(scrollPane,BorderLayout.CENTER);
     	/*Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     	Dimension ventana = this.getSize();
     	this.setLocation(((pantalla.width - ventana.width) / 2), ((pantalla.height - ventana.height) / 2));*/
@@ -109,12 +116,6 @@ public class Ventana extends JFrame implements ActionListener {
     }
 	
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == cursor){
-			cur = true;
-			fi = false;
-		}else if(e.getSource() == estado){
-			cur = false;
-			fi = true;
-		}
+		
 	}
 }
