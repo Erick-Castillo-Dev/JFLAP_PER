@@ -2,12 +2,8 @@ package com.example;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,6 +25,7 @@ public class Ventana extends JFrame implements ActionListener {
     private JButton cursor,estado,transicion,eliminar,des,re;
     private JPanel panel = new JPanel();
 	private JScrollPane scrollPane = new JScrollPane(panel);
+	private Lienzo_Canvas l = new Lienzo_Canvas();
     
     public Ventana(){
     	super("JFLAP");
@@ -42,8 +39,10 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
+    	l.addFigura(new Circunferecia(64, 8, 22, Color.BLUE));
+    	panel.add(l);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.getContentPane().add(scrollPane,BorderLayout.CENTER);
     	/*Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     	Dimension ventana = this.getSize();
