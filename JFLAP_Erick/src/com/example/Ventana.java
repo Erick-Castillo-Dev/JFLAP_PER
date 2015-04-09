@@ -17,7 +17,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JToolBar;
 
 public class Ventana extends JFrame implements ActionListener {
-	LienzoParaArrastrarFiguras c = new LienzoParaArrastrarFiguras();
 	boolean cur = true;
 	boolean fi = false;
 	private JMenuBar menuBar;
@@ -39,13 +38,6 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
-    	c.addFigura(new Rectangulo(2, 3, 50, 33, Color.RED));
-    	c.addFigura(new Rectangulo(7, 22, 150, 10, Color.GREEN));
-    	c.addFigura(new Rectangulo(11, 44, 20, 100, Color.CYAN));
-    	c.addFigura(new Circunferecia(6, 8, 34, Color.YELLOW));
-    	c.addFigura(new Circunferecia(34, 8, 55, Color.WHITE));
-    	c.addFigura(new Circunferecia(64, 8, 22, Color.BLUE));
-    	this.getContentPane().add(c);
     	/*Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     	Dimension ventana = this.getSize();
     	this.setLocation(((pantalla.width - ventana.width) / 2), ((pantalla.height - ventana.height) / 2));*/
