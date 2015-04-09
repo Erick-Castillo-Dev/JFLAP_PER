@@ -3,10 +3,17 @@ package com.example;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
+
+import javax.swing.JFrame;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionListener{
 	
@@ -14,9 +21,40 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 	private InterfaceFigura figuraArrastrandose = null;
 	private int xAnteriorRaton;
 	private int yAnteriorRaton;
+	public JPopupMenu pmenu;
+	
+	public void createPopupMenu() {
+
+        pmenu = new JPopupMenu();
+        
+        JMenuItem maxMi = new JMenuItem("Maximize");
+        maxMi.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+               System.out.println("Maximize");
+
+            }
+        });
+
+        pmenu.add(maxMi);
+
+        JMenuItem quitMi = new JMenuItem("Quit");
+        quitMi.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        pmenu.add(quitMi);
+    }
 	
 	public Lienzo_Canvas() {
 		addMouseMotionListener(this);
+		addMouseListener(this);
 	}
 	
 	public void removeFigura(InterfaceFigura figura){
@@ -72,7 +110,14 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getButton() == MouseEvent.BUTTON3) {
+			this.figuraArrastrandose = dameFigura(e);
+			if(this.figuraArrastrandose == null){
+				
+			}else{
+            pmenu.show(e.getComponent(), e.getX(), e.getY());
+			}
+        }
 		
 	}
 

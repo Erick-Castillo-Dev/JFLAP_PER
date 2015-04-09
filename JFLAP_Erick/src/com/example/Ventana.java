@@ -44,6 +44,7 @@ public class Ventana extends JFrame implements ActionListener {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.getContentPane().add(scrollPane,BorderLayout.CENTER);
+        l.createPopupMenu();
     	/*Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     	Dimension ventana = this.getSize();
     	this.setLocation(((pantalla.width - ventana.width) / 2), ((pantalla.height - ventana.height) / 2));*/
