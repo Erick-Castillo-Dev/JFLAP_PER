@@ -19,7 +19,7 @@ package com.example;
    public void dibujate(Graphics g)
    {
      g.setColor(this.color);
-     g.drawOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
+     g.fillOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
    }
  
    public boolean estaDentro(int x, int y)

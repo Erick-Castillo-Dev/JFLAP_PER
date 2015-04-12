@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -94,12 +95,12 @@ public class Ventana extends JFrame implements ActionListener {
 	
 	private JToolBar getToolBar() {
         JToolBar barraBotones = new JToolBar();
-        cursor = new JButton("Cursor");
-        estado = new JButton("Estado");
-        transicion = new JButton("Transicion");
-        eliminar = new JButton("Eliminar");
-        des = new JButton("Des-Hacer");
-        re = new JButton("Re-Hacer");
+        cursor = new JButton(new ImageIcon("iconos/cursor.jpg"));
+        estado = new JButton(new ImageIcon("iconos/estado.jpg"));
+        transicion = new JButton(new ImageIcon("iconos/fechita.jpg"));
+        eliminar = new JButton(new ImageIcon("iconos/eliminar.jpg"));
+        des = new JButton(new ImageIcon("iconos/des-hacer.jpg"));
+        re = new JButton(new ImageIcon("iconos/re-hacer.jpg"));
         cursor.addActionListener(this);
         estado.addActionListener(this);
         transicion.addActionListener(this);
