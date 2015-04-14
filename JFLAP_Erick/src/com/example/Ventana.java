@@ -40,7 +40,7 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
-    	l.addFigura(new Circunferecia(64, 64, 22,new Color(hex("EBDF56"))));
+    	l.addFigura(new Circunferecia(64, 64, 22,l.num++,new Color(hex("EBDF56"))));
     	panel.add(l);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -129,15 +129,15 @@ public class Ventana extends JFrame implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == cursor){
-			l.c.setCursor(true);
-			l.c.setEliminar(false);
-			l.c.setEstado(false);
-			l.c.setTransicion(false);
+			l.cursor = true;
+			l.eliminar = false;
+			l.estado = false;
+			l.transicion = false;
 		}else if(e.getSource() == estado){
-			l.c.setCursor(false);
-			l.c.setEliminar(false);
-			l.c.setEstado(true);
-			l.c.setTransicion(false);
+			l.cursor = false;
+			l.eliminar = false;
+			l.estado = true;
+			l.transicion = false;
 		}
 	}
 }

@@ -7,13 +7,15 @@ package com.example;
    private int y;
    private Color color;
    private int radio;
+   private int num=0;
  
-   public Circunferecia(int x, int y, int radio, Color color)
+   public Circunferecia(int x, int y, int radio, int num, Color color)
    {
      this.x = x;
      this.y = y;
      this.color = color;
      this.radio = radio;
+     this.num = num;
    }
  
    public void dibujate(Graphics g)
@@ -22,7 +24,11 @@ package com.example;
      g.fillOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
      g.setColor(Color.BLACK);
      g.drawOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
-     g.drawString("q0",this.x - 5 , this.y + 5 );
+     if(num<10){
+    	 g.drawString("q"+num,this.x - 5 , this.y + 5 );
+     }else{
+    	 g.drawString("q"+num,this.x - 8 , this.y + 5 );
+     }
    }
  
    public boolean estaDentro(int x, int y)

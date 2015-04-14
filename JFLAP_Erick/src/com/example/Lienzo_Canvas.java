@@ -15,14 +15,15 @@ import javax.swing.JCheckBox;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionListener{
+public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionListener {
 	
 	private LinkedList<InterfaceFigura> listaFiguras = new LinkedList();
 	private InterfaceFigura figuraArrastrandose = null;
 	private int xAnteriorRaton;
 	private int yAnteriorRaton;
 	public JPopupMenu pmenu;
-	public Configuracion c;
+	boolean cursor=true,estado=false,transicion=false,eliminar=false;
+	int num = 0;
 	
 	public void createPopupMenu() {
 
@@ -108,12 +109,15 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		//addFigura(new Circunferecia(e.getX(), e.getY(), 22,new Color(hex("EBDF56"))));	
-		//repaint();
+		if(estado){
+		addFigura(new Circunferecia(e.getX(), e.getY(), 22,num++,new Color(hex("EBDF56"))));	
+		repaint();
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		if(cursor){
 		if (e.getButton() == MouseEvent.BUTTON3) {
 			this.figuraArrastrandose = dameFigura(e);
 			if(this.figuraArrastrandose == null){
@@ -122,11 +126,12 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
             pmenu.show(e.getComponent(), e.getX(), e.getY());
 			}
         }
+		}
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-
+		if(cursor){
 		if (this.figuraArrastrandose == null){
 		       this.xAnteriorRaton = e.getX();
 		       this.yAnteriorRaton = e.getY(); 
@@ -137,9 +142,9 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 	         this.figuraArrastrandose.getY() + (e.getY() - this.yAnteriorRaton)); 
 	       this.xAnteriorRaton = e.getX();
 	       this.yAnteriorRaton = e.getY();
-	       this.figuraArrastrandose.setColor(Color.blue);
 	       repaint();
 	     }
+		}
 	}
 
 	@Override
