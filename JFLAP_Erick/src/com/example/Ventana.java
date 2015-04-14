@@ -40,7 +40,7 @@ public class Ventana extends JFrame implements ActionListener {
     	this.addComponents();
     	JToolBar toolBar = getToolBar();
     	this.getContentPane().add(toolBar, BorderLayout.NORTH);
-    	l.addFigura(new Circunferecia(64, 8, 22, Color.BLUE));
+    	l.addFigura(new Circunferecia(64, 64, 22,new Color(hex("EBDF56"))));
     	panel.add(l);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -52,6 +52,11 @@ public class Ventana extends JFrame implements ActionListener {
     	this.setVisible(true);
     }
 
+    private int hex( String color_hex )
+    {
+        return Integer.parseInt(color_hex,  16 );
+    }
+    
 	private void addComponents() {
 		menuBar = new JMenuBar();
     	this.setJMenuBar(menuBar);
@@ -107,6 +112,12 @@ public class Ventana extends JFrame implements ActionListener {
         eliminar.addActionListener(this);
         des.addActionListener(this);
         re.addActionListener(this);
+        cursor.setToolTipText("Cursor");
+        estado.setToolTipText("Estado");
+        transicion.setToolTipText("Transicion");
+        eliminar.setToolTipText("Eliminar");
+        des.setToolTipText("Des Hacer");
+        re.setToolTipText("Re Hacer");
         barraBotones.add(cursor);
         barraBotones.add(estado);
         barraBotones.add(transicion);
@@ -117,6 +128,16 @@ public class Ventana extends JFrame implements ActionListener {
     }
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		if(e.getSource() == cursor){
+			l.c.setCursor(true);
+			l.c.setEliminar(false);
+			l.c.setEstado(false);
+			l.c.setTransicion(false);
+		}else if(e.getSource() == estado){
+			l.c.setCursor(false);
+			l.c.setEliminar(false);
+			l.c.setEstado(true);
+			l.c.setTransicion(false);
+		}
 	}
 }

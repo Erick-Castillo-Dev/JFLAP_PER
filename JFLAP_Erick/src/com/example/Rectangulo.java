@@ -46,4 +46,16 @@ public class Rectangulo implements InterfaceFigura{
    {
      return this.y;
    }
+
+@Override
+public Color getcolor() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public void setColor(Color c) {
+	// TODO Auto-generated method stub
+	
+}
  }

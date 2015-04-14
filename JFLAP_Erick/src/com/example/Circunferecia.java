@@ -20,6 +20,9 @@ package com.example;
    {
      g.setColor(this.color);
      g.fillOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
+     g.setColor(Color.BLACK);
+     g.drawOval(this.x - this.radio, this.y - this.radio, 2 * this.radio, 2 * this.radio);
+     g.drawString("q0",this.x - 5 , this.y + 5 );
    }
  
    public boolean estaDentro(int x, int y)
@@ -44,4 +47,12 @@ package com.example;
    {
      return this.y;
    }
+
+public Color getcolor() {
+	return this.color;
+}
+
+public void setColor(Color c) {
+	this.color = c;
+}
  }

@@ -1,17 +1,17 @@
 package com.example;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
 
-import javax.swing.JFrame;
+import javax.swing.JCheckBox;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -22,11 +22,15 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 	private int xAnteriorRaton;
 	private int yAnteriorRaton;
 	public JPopupMenu pmenu;
+	public Configuracion c;
 	
 	public void createPopupMenu() {
 
         pmenu = new JPopupMenu();
-        
+        JCheckBox fin = new JCheckBox("Final");
+        JCheckBox inicio = new JCheckBox("Inicial");
+        pmenu.add(fin);
+        pmenu.add(inicio);
         JMenuItem maxMi = new JMenuItem("Maximize");
         maxMi.addActionListener(new ActionListener() {
             
@@ -104,8 +108,8 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		//addFigura(new Circunferecia(e.getX(), e.getY(), 22,new Color(hex("EBDF56"))));	
+		//repaint();
 	}
 
 	@Override
@@ -118,11 +122,11 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
             pmenu.show(e.getComponent(), e.getX(), e.getY());
 			}
         }
-		
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
+
 		if (this.figuraArrastrandose == null){
 		       this.xAnteriorRaton = e.getX();
 		       this.yAnteriorRaton = e.getY(); 
@@ -132,7 +136,8 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 	         this.figuraArrastrandose.getX() + (e.getX() - this.xAnteriorRaton), 
 	         this.figuraArrastrandose.getY() + (e.getY() - this.yAnteriorRaton)); 
 	       this.xAnteriorRaton = e.getX();
-	       this.yAnteriorRaton = e.getY(); 
+	       this.yAnteriorRaton = e.getY();
+	       this.figuraArrastrandose.setColor(Color.blue);
 	       repaint();
 	     }
 	}
@@ -141,5 +146,10 @@ public class Lienzo_Canvas extends Canvas implements MouseListener, MouseMotionL
 	public void mouseMoved(MouseEvent e) {
 		this.figuraArrastrandose = null;		
 	}
+	
+	private int hex( String color_hex )
+    {
+        return Integer.parseInt(color_hex,  16 );
+    }
 
 }

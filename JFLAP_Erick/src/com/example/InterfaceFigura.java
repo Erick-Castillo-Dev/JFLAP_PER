@@ -1,5 +1,6 @@
 package com.example;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract interface InterfaceFigura
@@ -11,6 +12,10 @@ public abstract interface InterfaceFigura
   public abstract int getX();
 
   public abstract int getY();
+  
+  public abstract Color getcolor();
+  
+  public abstract void setColor(Color c);
 
   public abstract void dibujate(Graphics paramGraphics);
 }
