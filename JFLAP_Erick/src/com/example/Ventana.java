@@ -43,7 +43,7 @@ public class Ventana extends JFrame implements ActionListener {
 		JToolBar toolBar = getToolBar();
 		this.getContentPane().add(toolBar, BorderLayout.NORTH);
 		l.addFigura(new Circunferecia(64, 64, 22, l.num++, new Color(
-				hex("EBDF56")), true, false));
+				hex("EBDF56")), false, true));
 		panel.add(l);
 		scrollPane
 				.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

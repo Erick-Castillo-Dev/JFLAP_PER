@@ -103,6 +103,8 @@ public class Circunferecia implements InterfaceFigura {
 		g.setColor(Color.BLACK);
 		g.drawOval(this.x - this.radio, this.y - this.radio, 2 * this.radio,
 				2 * this.radio);
+		g.drawOval(this.x - this.radio+5, this.y - this.radio+5, 2 * this.radio-10,
+				2 * this.radio-10);
 		if (num < 10) {
 			g.drawString("q" + num, this.x - 5, this.y + 5);
 		} else {
